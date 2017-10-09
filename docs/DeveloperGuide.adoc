@@ -761,6 +761,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`*` |lazy user| create an email by clicking on email address on person card| send email on the fly
 
+|`*` |lazy user2| create an email by clicking on email address on person card| send email on the fly
+
 
 |=======================================================================
 
