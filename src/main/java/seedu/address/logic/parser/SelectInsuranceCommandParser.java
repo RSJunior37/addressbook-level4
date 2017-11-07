@@ -7,8 +7,9 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.SelectInsuranceCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+//@@author RSJunior37
 /**
- * Parses input arguments and creates a new SelectCommand object
+ * Parses input arguments and creates a new SelectInsuranceCommand object
  */
 public class SelectInsuranceCommandParser implements Parser<SelectInsuranceCommand> {
 

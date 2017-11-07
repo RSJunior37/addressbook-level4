@@ -3,8 +3,9 @@ package seedu.address.commons.events.ui;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.BaseEvent;
 
+//@@author RSJunior37
 /**
- * Indicates a request to jump to the list of persons
+ * Indicates a request to jump to the list of insurances
  */
 public class JumpToInsuranceRequestEvent extends BaseEvent {
 

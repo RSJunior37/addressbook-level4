@@ -9,8 +9,9 @@ import seedu.address.commons.events.ui.JumpToInsuranceRequestEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.ReadOnlyPerson;
 
+//@@author RSJunior37
 /**
- * Selects a person identified using it's last displayed index from the address book.
+ * Selects an insurance identified using it's index displayed on insurance panel.
  */
 public class SelectInsuranceCommand extends Command {
 
