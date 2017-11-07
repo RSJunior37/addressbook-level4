@@ -6,6 +6,7 @@ import org.fxmisc.easybind.EasyBind;
 
 import com.google.common.eventbus.Subscribe;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -14,6 +15,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.InsuranceClickedEvent;
 import seedu.address.commons.events.ui.InsurancePanelSelectionChangedEvent;
+import seedu.address.commons.events.ui.JumpToInsuranceRequestEvent;
 import seedu.address.commons.events.ui.SwitchToProfilePanelRequestEvent;
 import seedu.address.model.insurance.ReadOnlyInsurance;
 
@@ -59,8 +61,14 @@ public class InsuranceListPanel extends UiPart<Region> {
         setEventHandlerForSelectionChangeEvent();
 
     }
-
     //@@author RSJunior37
+    private void scrollTo(int index) {
+        Platform.runLater(() -> {
+            insuranceListView.scrollTo(index);
+            insuranceListView.getSelectionModel().clearAndSelect(index);
+        });
+    }
+
     private void setEventHandlerForSelectionChangeEvent() {
         insuranceListView.getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
@@ -90,6 +98,15 @@ public class InsuranceListPanel extends UiPart<Region> {
     }
     // weird phenomenon that a filteredList does not contain elements in the original list and cannot be used
     // in the select command
+    //@@author
+
+
+    //@@author RSJunior37
+    @Subscribe
+    private void handleJumpToInsuranceRequestEvent(JumpToInsuranceRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        scrollTo(event.targetIndex);
+    }
     //@@author
 
     /**
