@@ -62,6 +62,11 @@ public class InsuranceListPanel extends UiPart<Region> {
 
     }
     //@@author RSJunior37
+
+    /**
+     * Scrolls down the listview to targetindex and select the entry
+     * @param index
+     */
     private void scrollTo(int index) {
         Platform.runLater(() -> {
             insuranceListView.scrollTo(index);

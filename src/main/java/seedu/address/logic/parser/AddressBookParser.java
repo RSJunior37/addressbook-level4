@@ -36,7 +36,8 @@ public class AddressBookParser {
      * Enumerator list to define the types of commands.
      */
     private enum CommandType {
-        ADD, ADDLI, CLEAR, DEL, EDIT, EXIT, FIND, PFIND, HELP, HISTORY, LIST, PRINT, REDO, UNDO, SELECT, SELECTIN, WHY, NONE
+        ADD, ADDLI, CLEAR, DEL, EDIT, EXIT, FIND, PFIND, HELP, HISTORY, LIST
+        , PRINT, REDO, UNDO, SELECT, SELECTIN, WHY, NONE
     }
 
     /**
