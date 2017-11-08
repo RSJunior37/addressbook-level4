@@ -16,7 +16,9 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.InsuranceClickedEvent;
 import seedu.address.commons.events.ui.InsurancePanelSelectionChangedEvent;
 import seedu.address.commons.events.ui.JumpToInsuranceRequestEvent;
+import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.events.ui.SwitchToProfilePanelRequestEvent;
+import seedu.address.logic.commands.SelectCommand.PanelChoice;
 import seedu.address.model.insurance.ReadOnlyInsurance;
 
 //@@author OscarWang114
@@ -91,11 +93,30 @@ public class InsuranceListPanel extends UiPart<Region> {
         insuranceListView.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Scrolls to the {@code PersonCard} at the {@code index} and selects it.
+     */
+    private void scrollTo(int index) {
+        Platform.runLater(() -> {
+            insuranceListView.scrollTo(index);
+            insuranceListView.getSelectionModel().clearAndSelect(index);
+        });
+    }
+
+    @Subscribe
+    private void handleJumpToListRequestEvent(JumpToListRequestEvent event) {
+        if (event.panelChoice == PanelChoice.INSURANCE) {
+            logger.info(LogsCenter.getEventHandlingLogMessage(event));
+            scrollTo(event.targetIndex);
+        }
+    }
+
     @Subscribe
     private void handleInsuranceClickedEvent(InsuranceClickedEvent event) {
         ObservableList<InsuranceProfile> insurances = insuranceListView.getItems();
         for (int i = 0; i < insurances.size(); i++) {
             if (insurances.get(i).getInsurance().getInsuranceName().equals(event.getInsurance().getInsuranceName())) {
+                insuranceListView.scrollTo(i);
                 insuranceListView.getSelectionModel().select(i);
                 break;
             }
